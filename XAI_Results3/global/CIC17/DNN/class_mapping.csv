@@ -1,0 +1,9 @@
+﻿class_index,class_name,test_support
+0,Botnet / Infiltration,400
+1,Brute Force,2767
+2,DDoS,25605
+3,DoS,50534
+4,Normal,454620
+5,Other,57721
+6,Port Scan,31786
+7,Web Attack,436

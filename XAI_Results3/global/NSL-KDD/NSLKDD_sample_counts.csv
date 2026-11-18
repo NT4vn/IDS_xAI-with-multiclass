@@ -1,0 +1,7 @@
+﻿class_index,class_name,test_support,n_explain_samples,n_background_samples,n_lime_samples
+0,DoS,10677,94,6,50
+1,Normal,15411,94,6,50
+2,Other,0,0,0,0
+3,Probe,2816,94,6,50
+4,R2L,776,94,6,50
+5,U2R,24,24,6,24

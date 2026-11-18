@@ -1,0 +1,5 @@
+﻿class_index,class_name,test_support
+0,DoS,175096
+1,Malware,114
+2,Normal,280000
+3,Port Scan,160119

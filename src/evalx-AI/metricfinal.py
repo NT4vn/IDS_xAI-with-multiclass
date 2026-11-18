@@ -34,6 +34,14 @@ if not frames:
     raise ValueError(f"No usable XAI result workbooks found in {RESULT_DIR.resolve()}.")
 
 all_results = pd.concat(frames, ignore_index=True)
+# LightGBM multiclass TreeSHAP is evaluated on raw class scores because SHAP's
+# probability output is unsupported for this model. Keep raw per-model results,
+# but do not average scale-dependent TreeSHAP metrics with probability-scale methods.
+raw_lgbm_tree_metrics = (
+    all_results["Metric"].isin(["Infidelity", "Robustness"])
+    & all_results["Model"].eq("LightGBM")
+)
+all_results.loc[raw_lgbm_tree_metrics, "TreeSHAP"] = float("nan")
 avg = all_results.groupby(["Dataset", "Metric"], as_index=False)[METHODS].mean(numeric_only=True)
 avg.to_excel(RESULT_DIR / "FINAL_AVG_BY_DATASET.xlsx", index=False)
 

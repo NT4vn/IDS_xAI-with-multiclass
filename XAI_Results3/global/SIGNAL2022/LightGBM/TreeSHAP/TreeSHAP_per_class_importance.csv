@@ -1,0 +1,109 @@
+﻿class_index,class_name,test_support,n_explained_samples,feature,mean_abs_importance
+0,DoS,175096,40,l4_src_port,2517892.02972176
+0,DoS,175096,40,tcp_win_mss_in,3173.750404414535
+0,DoS,175096,40,flow_duration_milliseconds,6377106.052033967
+0,DoS,175096,40,total_bytes_exp,0.0
+0,DoS,175096,40,tcp_win_max_in,931259.1024025399
+0,DoS,175096,40,total_pkts_exp,0.0
+0,DoS,175096,40,tcp_win_min_in,485059.10757686
+0,DoS,175096,40,src_tos,17995.10508171209
+0,DoS,175096,40,total_flows_exp,3804129.4914485887
+0,DoS,175096,40,tcp_win_scale_out,407455.99614773743
+0,DoS,175096,40,l4_dst_port,169530.78272802857
+0,DoS,175096,40,protocol,0.1042731370097864
+0,DoS,175096,40,tcp_win_scale_in,5054414.756984675
+0,DoS,175096,40,out_pkts,39284.11394861927
+0,DoS,175096,40,tcp_flags,96631.74327396291
+0,DoS,175096,40,in_bytes,2969333.452846727
+0,DoS,175096,40,in_pkts,1268279.0549509977
+0,DoS,175096,40,tcp_win_max_out,33421.182756643495
+0,DoS,175096,40,tcp_win_min_out,159.80337922030319
+0,DoS,175096,40,dst_tos,64024.717528957524
+0,DoS,175096,40,out_bytes,1112071.5207350708
+0,DoS,175096,40,protocol_map_icmp,0.0
+0,DoS,175096,40,protocol_map_ipv6,0.0
+0,DoS,175096,40,protocol_map_ipv6-icmp,0.0
+0,DoS,175096,40,protocol_map_skip,0.0
+0,DoS,175096,40,protocol_map_tcp,6095.024126269031
+0,DoS,175096,40,protocol_map_udp,257.47929029609134
+1,Malware,114,40,l4_src_port,10968654.008744713
+1,Malware,114,40,tcp_win_mss_in,888.2534671906693
+1,Malware,114,40,flow_duration_milliseconds,1941470.8170058462
+1,Malware,114,40,total_bytes_exp,0.0
+1,Malware,114,40,tcp_win_max_in,588607.3421688328
+1,Malware,114,40,total_pkts_exp,0.0
+1,Malware,114,40,tcp_win_min_in,527.1524956290385
+1,Malware,114,40,src_tos,9753111.364655918
+1,Malware,114,40,total_flows_exp,38465501.755657285
+1,Malware,114,40,tcp_win_scale_out,1989.6278639028853
+1,Malware,114,40,l4_dst_port,834318.3654256843
+1,Malware,114,40,protocol,4070.4983711325526
+1,Malware,114,40,tcp_win_scale_in,498.2782963516226
+1,Malware,114,40,out_pkts,15617.354536917212
+1,Malware,114,40,tcp_flags,2037.428863818081
+1,Malware,114,40,in_bytes,953518.7144420365
+1,Malware,114,40,in_pkts,1614880.9112186984
+1,Malware,114,40,tcp_win_max_out,383.8957465465952
+1,Malware,114,40,tcp_win_min_out,2279.085286573669
+1,Malware,114,40,dst_tos,76204.60676439863
+1,Malware,114,40,out_bytes,601707.6610877679
+1,Malware,114,40,protocol_map_icmp,416.86755889097356
+1,Malware,114,40,protocol_map_ipv6,0.0
+1,Malware,114,40,protocol_map_ipv6-icmp,0.0
+1,Malware,114,40,protocol_map_skip,0.0
+1,Malware,114,40,protocol_map_tcp,0.0
+1,Malware,114,40,protocol_map_udp,0.0
+2,Normal,280000,40,l4_src_port,1616710.7320922934
+2,Normal,280000,40,tcp_win_mss_in,599637.798757027
+2,Normal,280000,40,flow_duration_milliseconds,4452651.2333010305
+2,Normal,280000,40,total_bytes_exp,0.0
+2,Normal,280000,40,tcp_win_max_in,3742670.841223308
+2,Normal,280000,40,total_pkts_exp,0.0
+2,Normal,280000,40,tcp_win_min_in,57888.17297219161
+2,Normal,280000,40,src_tos,935874.4257789872
+2,Normal,280000,40,total_flows_exp,1308607.5931357804
+2,Normal,280000,40,tcp_win_scale_out,186009.37851037347
+2,Normal,280000,40,l4_dst_port,740292.5749432583
+2,Normal,280000,40,protocol,233.59918792513508
+2,Normal,280000,40,tcp_win_scale_in,502735.8589099209
+2,Normal,280000,40,out_pkts,76126.67417493413
+2,Normal,280000,40,tcp_flags,14976.295520278456
+2,Normal,280000,40,in_bytes,503839.7424119045
+2,Normal,280000,40,in_pkts,95826.37440271102
+2,Normal,280000,40,tcp_win_max_out,102874.20301639059
+2,Normal,280000,40,tcp_win_min_out,109343.75935823613
+2,Normal,280000,40,dst_tos,65077.78511387445
+2,Normal,280000,40,out_bytes,164761.69345540306
+2,Normal,280000,40,protocol_map_icmp,0.0018119110025723475
+2,Normal,280000,40,protocol_map_ipv6,0.0
+2,Normal,280000,40,protocol_map_ipv6-icmp,0.0
+2,Normal,280000,40,protocol_map_skip,0.0
+2,Normal,280000,40,protocol_map_tcp,0.49679531459422244
+2,Normal,280000,40,protocol_map_udp,22399.80257339331
+3,Port Scan,160119,40,l4_src_port,6047120.111622539
+3,Port Scan,160119,40,tcp_win_mss_in,211842.67474727184
+3,Port Scan,160119,40,flow_duration_milliseconds,2890644.001316474
+3,Port Scan,160119,40,total_bytes_exp,0.0
+3,Port Scan,160119,40,tcp_win_max_in,473652.6646085603
+3,Port Scan,160119,40,total_pkts_exp,0.0
+3,Port Scan,160119,40,tcp_win_min_in,4659.198480363146
+3,Port Scan,160119,40,src_tos,52944.47866840065
+3,Port Scan,160119,40,total_flows_exp,1688503.2145331476
+3,Port Scan,160119,40,tcp_win_scale_out,2321.298176689605
+3,Port Scan,160119,40,l4_dst_port,3304967.3410295686
+3,Port Scan,160119,40,protocol,16561.736010370983
+3,Port Scan,160119,40,tcp_win_scale_in,593103.8911366381
+3,Port Scan,160119,40,out_pkts,28446.72246187319
+3,Port Scan,160119,40,tcp_flags,902380.6449723383
+3,Port Scan,160119,40,in_bytes,7269.799421102225
+3,Port Scan,160119,40,in_pkts,536544.3076946039
+3,Port Scan,160119,40,tcp_win_max_out,424.72933820590345
+3,Port Scan,160119,40,tcp_win_min_out,0.03355430062652094
+3,Port Scan,160119,40,dst_tos,73993.4436017248
+3,Port Scan,160119,40,out_bytes,598161.6914931788
+3,Port Scan,160119,40,protocol_map_icmp,40.27997566833807
+3,Port Scan,160119,40,protocol_map_ipv6,0.0
+3,Port Scan,160119,40,protocol_map_ipv6-icmp,0.0
+3,Port Scan,160119,40,protocol_map_skip,0.0
+3,Port Scan,160119,40,protocol_map_tcp,4442.494696002635
+3,Port Scan,160119,40,protocol_map_udp,2503.8496519401533

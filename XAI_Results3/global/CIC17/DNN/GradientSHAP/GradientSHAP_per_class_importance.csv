@@ -1,0 +1,241 @@
+﻿class_name,n_explained_samples,test_support,feature,mean_abs_importance
+Botnet / Infiltration,50,400,flow duration,0.022342768294620327
+Botnet / Infiltration,50,400,source port,0.1807242824882269
+Botnet / Infiltration,50,400,urg flag count,0.16072901345874924
+Botnet / Infiltration,50,400,average packet size,0.0280895159317879
+Botnet / Infiltration,50,400,max packet length,0.0379330244474113
+Botnet / Infiltration,50,400,idle min,0.019552691964345285
+Botnet / Infiltration,50,400,fwd iat std,0.05061892990488559
+Botnet / Infiltration,50,400,ack flag count,0.14668305149301886
+Botnet / Infiltration,50,400,bwd iat max,0.009382589538581669
+Botnet / Infiltration,50,400,avg bwd segment size,0.06696659314678982
+Botnet / Infiltration,50,400,destination port,0.3120673804730177
+Botnet / Infiltration,50,400,psh flag count,0.12643499545753
+Botnet / Infiltration,50,400,bwd packet length std,0.03964861838845536
+Botnet / Infiltration,50,400,fwd iat mean,0.01041586023504351
+Botnet / Infiltration,50,400,init_win_bytes_forward,0.18714303895831108
+Botnet / Infiltration,50,400,packet length variance,0.030634366871090606
+Botnet / Infiltration,50,400,packet length mean,0.016799981750082224
+Botnet / Infiltration,50,400,fwd iat max,0.0224181979766945
+Botnet / Infiltration,50,400,bwd iat std,0.004407773588318378
+Botnet / Infiltration,50,400,idle max,0.03130555894167628
+Botnet / Infiltration,50,400,bwd iat total,0.01482328728401626
+Botnet / Infiltration,50,400,fwd iat total,0.01855677962070331
+Botnet / Infiltration,50,400,flow iat std,0.015152619736618363
+Botnet / Infiltration,50,400,fin flag count,0.0
+Botnet / Infiltration,50,400,idle mean,0.013048401643754915
+Botnet / Infiltration,50,400,protocol,0.020224709096182777
+Botnet / Infiltration,50,400,packet length std,0.0195228997268714
+Botnet / Infiltration,50,400,bwd packet length max,0.022306453503260854
+Botnet / Infiltration,50,400,flow iat max,0.02564460988069186
+Botnet / Infiltration,50,400,bwd packet length mean,0.059854514980688694
+Brute Force,50,2767,flow duration,0.042584682798478754
+Brute Force,50,2767,source port,0.15786811604630202
+Brute Force,50,2767,urg flag count,0.10971141093376585
+Brute Force,50,2767,average packet size,0.09933691351208836
+Brute Force,50,2767,max packet length,0.02030909626831999
+Brute Force,50,2767,idle min,0.03460604640815291
+Brute Force,50,2767,fwd iat std,0.047031932377722116
+Brute Force,50,2767,ack flag count,0.12020276906900108
+Brute Force,50,2767,bwd iat max,0.01077753917708833
+Brute Force,50,2767,avg bwd segment size,0.051596337718656286
+Brute Force,50,2767,destination port,0.2481881438754499
+Brute Force,50,2767,psh flag count,0.09512705352157354
+Brute Force,50,2767,bwd packet length std,0.07287898122915067
+Brute Force,50,2767,fwd iat mean,0.02088595589622855
+Brute Force,50,2767,init_win_bytes_forward,0.10611285749590024
+Brute Force,50,2767,packet length variance,0.05534666013118113
+Brute Force,50,2767,packet length mean,0.07340808629989624
+Brute Force,50,2767,fwd iat max,0.03300330020487308
+Brute Force,50,2767,bwd iat std,0.013724278426379896
+Brute Force,50,2767,idle max,0.03030588059220463
+Brute Force,50,2767,bwd iat total,0.05231896590732504
+Brute Force,50,2767,fwd iat total,0.05299010256305337
+Brute Force,50,2767,flow iat std,0.0352257330052089
+Brute Force,50,2767,fin flag count,0.0
+Brute Force,50,2767,idle mean,0.03288896710728295
+Brute Force,50,2767,protocol,0.043704030420631174
+Brute Force,50,2767,packet length std,0.060860871228796895
+Brute Force,50,2767,bwd packet length max,0.04386928158113733
+Brute Force,50,2767,flow iat max,0.029638402364216745
+Brute Force,50,2767,bwd packet length mean,0.05371405767975375
+DDoS,50,25605,flow duration,0.11894979336299003
+DDoS,50,25605,source port,0.0737260405975394
+DDoS,50,25605,urg flag count,0.027435305025096567
+DDoS,50,25605,average packet size,0.17264300825074316
+DDoS,50,25605,max packet length,0.1035221036337316
+DDoS,50,25605,idle min,0.057236402024282144
+DDoS,50,25605,fwd iat std,0.03605937729298603
+DDoS,50,25605,ack flag count,0.08293198134284467
+DDoS,50,25605,bwd iat max,0.006361103145754896
+DDoS,50,25605,avg bwd segment size,0.09840006577083842
+DDoS,50,25605,destination port,0.04507888336200267
+DDoS,50,25605,psh flag count,0.09409143509343267
+DDoS,50,25605,bwd packet length std,0.07470015247352421
+DDoS,50,25605,fwd iat mean,0.0378020181064494
+DDoS,50,25605,init_win_bytes_forward,0.11774675282009411
+DDoS,50,25605,packet length variance,0.08073308627819642
+DDoS,50,25605,packet length mean,0.13406489198445343
+DDoS,50,25605,fwd iat max,0.06941978852264583
+DDoS,50,25605,bwd iat std,0.004246441046343534
+DDoS,50,25605,idle max,0.06266283859033138
+DDoS,50,25605,bwd iat total,0.00962693621404469
+DDoS,50,25605,fwd iat total,0.08873356465250254
+DDoS,50,25605,flow iat std,0.020598452604453997
+DDoS,50,25605,fin flag count,0.0
+DDoS,50,25605,idle mean,0.06155042929342017
+DDoS,50,25605,protocol,0.021620182344922797
+DDoS,50,25605,packet length std,0.14289433419704436
+DDoS,50,25605,bwd packet length max,0.05172406727448106
+DDoS,50,25605,flow iat max,0.07364851093152538
+DDoS,50,25605,bwd packet length mean,0.09348444650357124
+DoS,50,50534,flow duration,0.856508126300032
+DoS,50,50534,source port,0.1912451491423417
+DoS,50,50534,urg flag count,0.023767469975864514
+DoS,50,50534,average packet size,0.3742901026504114
+DoS,50,50534,max packet length,0.09114738525706344
+DoS,50,50534,idle min,0.38637473446200604
+DoS,50,50534,fwd iat std,0.226172117444803
+DoS,50,50534,ack flag count,0.10166226967994589
+DoS,50,50534,bwd iat max,0.02609030285588233
+DoS,50,50534,avg bwd segment size,0.37761474404484036
+DoS,50,50534,destination port,0.1364115501602646
+DoS,50,50534,psh flag count,0.13910718036349862
+DoS,50,50534,bwd packet length std,0.2636063786316663
+DoS,50,50534,fwd iat mean,0.21392205373966136
+DoS,50,50534,init_win_bytes_forward,0.21165431905537843
+DoS,50,50534,packet length variance,0.07566562004503793
+DoS,50,50534,packet length mean,0.4276289919728879
+DoS,50,50534,fwd iat max,0.37969496828562116
+DoS,50,50534,bwd iat std,0.03369105741207022
+DoS,50,50534,idle max,0.5783787685807329
+DoS,50,50534,bwd iat total,0.02959796532028122
+DoS,50,50534,fwd iat total,0.7108315473236143
+DoS,50,50534,flow iat std,0.15130349113605918
+DoS,50,50534,fin flag count,0.042116574347019195
+DoS,50,50534,idle mean,0.5207828202616657
+DoS,50,50534,protocol,0.04772137860090879
+DoS,50,50534,packet length std,0.25058522859588267
+DoS,50,50534,bwd packet length max,0.164746334477677
+DoS,50,50534,flow iat max,0.47327509811206253
+DoS,50,50534,bwd packet length mean,0.3659104515938088
+Normal,50,454620,flow duration,0.04698043204058194
+Normal,50,454620,source port,0.13616210273467005
+Normal,50,454620,urg flag count,0.06725520183023036
+Normal,50,454620,average packet size,0.06765506576979533
+Normal,50,454620,max packet length,0.027189375296002252
+Normal,50,454620,idle min,0.028007643386263225
+Normal,50,454620,fwd iat std,0.04112936000194168
+Normal,50,454620,ack flag count,0.1446944217896089
+Normal,50,454620,bwd iat max,0.0028212244122551057
+Normal,50,454620,avg bwd segment size,0.06652650012634695
+Normal,50,454620,destination port,0.1442286980547942
+Normal,50,454620,psh flag count,0.11490195688791573
+Normal,50,454620,bwd packet length std,0.046909920648904514
+Normal,50,454620,fwd iat mean,0.01966760439099744
+Normal,50,454620,init_win_bytes_forward,0.11825183775275945
+Normal,50,454620,packet length variance,0.03338622289185878
+Normal,50,454620,packet length mean,0.06084176677512005
+Normal,50,454620,fwd iat max,0.024463453210773877
+Normal,50,454620,bwd iat std,0.004068335791562277
+Normal,50,454620,idle max,0.04234277754600044
+Normal,50,454620,bwd iat total,0.02249588246944768
+Normal,50,454620,fwd iat total,0.04251839642645791
+Normal,50,454620,flow iat std,0.020331971899140627
+Normal,50,454620,fin flag count,0.004223032891750336
+Normal,50,454620,idle mean,0.024908756833028747
+Normal,50,454620,protocol,0.12484706179238855
+Normal,50,454620,packet length std,0.08542629519477486
+Normal,50,454620,bwd packet length max,0.022215013769455255
+Normal,50,454620,flow iat max,0.04494904268300161
+Normal,50,454620,bwd packet length mean,0.06408052799175494
+Other,50,57721,flow duration,0.12530092134140433
+Other,50,57721,source port,0.1813023282587528
+Other,50,57721,urg flag count,0.00998164828894257
+Other,50,57721,average packet size,0.0849661895740428
+Other,50,57721,max packet length,0.025652895204839297
+Other,50,57721,idle min,0.04136818840750493
+Other,50,57721,fwd iat std,0.024350208086543715
+Other,50,57721,ack flag count,0.14036268385592848
+Other,50,57721,bwd iat max,0.01623552402248606
+Other,50,57721,avg bwd segment size,0.07808801576087716
+Other,50,57721,destination port,0.05868281017057598
+Other,50,57721,psh flag count,0.10174827421084047
+Other,50,57721,bwd packet length std,0.09201755756861531
+Other,50,57721,fwd iat mean,0.025069710911484435
+Other,50,57721,init_win_bytes_forward,0.13122011861531063
+Other,50,57721,packet length variance,0.03072867354203481
+Other,50,57721,packet length mean,0.0991822108058841
+Other,50,57721,fwd iat max,0.0315029604708252
+Other,50,57721,bwd iat std,0.011743264242541044
+Other,50,57721,idle max,0.030680760550894776
+Other,50,57721,bwd iat total,0.019089610618539154
+Other,50,57721,fwd iat total,0.11868444063293282
+Other,50,57721,flow iat std,0.013978286492056213
+Other,50,57721,fin flag count,0.0
+Other,50,57721,idle mean,0.03793382168718381
+Other,50,57721,protocol,0.08313896029256285
+Other,50,57721,packet length std,0.07184327803552151
+Other,50,57721,bwd packet length max,0.025180711654247716
+Other,50,57721,flow iat max,0.04794152164580737
+Other,50,57721,bwd packet length mean,0.07885363140958361
+Port Scan,50,31786,flow duration,0.026683861536439507
+Port Scan,50,31786,source port,0.03474084728164598
+Port Scan,50,31786,urg flag count,0.024124414635462017
+Port Scan,50,31786,average packet size,0.03984708583913744
+Port Scan,50,31786,max packet length,0.02271806386299431
+Port Scan,50,31786,idle min,0.01300500472199019
+Port Scan,50,31786,fwd iat std,0.03213687656330876
+Port Scan,50,31786,ack flag count,0.06188828613609076
+Port Scan,50,31786,bwd iat max,0.007050642496324144
+Port Scan,50,31786,avg bwd segment size,0.044402511194348335
+Port Scan,50,31786,destination port,0.07000368402077584
+Port Scan,50,31786,psh flag count,0.14023427791893484
+Port Scan,50,31786,bwd packet length std,0.02517491734208306
+Port Scan,50,31786,fwd iat mean,0.007524480375432177
+Port Scan,50,31786,init_win_bytes_forward,0.23177886113524437
+Port Scan,50,31786,packet length variance,0.03360954006522661
+Port Scan,50,31786,packet length mean,0.04321679101791233
+Port Scan,50,31786,fwd iat max,0.01458722953510005
+Port Scan,50,31786,bwd iat std,0.002714969759917949
+Port Scan,50,31786,idle max,0.006524154851576896
+Port Scan,50,31786,bwd iat total,0.016958360123680905
+Port Scan,50,31786,fwd iat total,0.0289215003879508
+Port Scan,50,31786,flow iat std,0.014442944957118016
+Port Scan,50,31786,fin flag count,0.0
+Port Scan,50,31786,idle mean,0.004124217608954268
+Port Scan,50,31786,protocol,0.02014766222331673
+Port Scan,50,31786,packet length std,0.04264218534430256
+Port Scan,50,31786,bwd packet length max,0.020989674835000187
+Port Scan,50,31786,flow iat max,0.019744193665101193
+Port Scan,50,31786,bwd packet length mean,0.044705052888020874
+Web Attack,50,436,flow duration,0.0523104917233286
+Web Attack,50,436,source port,0.07062635657843203
+Web Attack,50,436,urg flag count,0.0568250857404017
+Web Attack,50,436,average packet size,0.08048363751382567
+Web Attack,50,436,max packet length,0.045277063748799265
+Web Attack,50,436,idle min,0.0150961579466275
+Web Attack,50,436,fwd iat std,0.18530725836753845
+Web Attack,50,436,ack flag count,0.10079856727272272
+Web Attack,50,436,bwd iat max,0.010049798996333266
+Web Attack,50,436,avg bwd segment size,0.02924243704415858
+Web Attack,50,436,destination port,0.14027315667364745
+Web Attack,50,436,psh flag count,0.05652126248343848
+Web Attack,50,436,bwd packet length std,0.055422403234988454
+Web Attack,50,436,fwd iat mean,0.014550803518577595
+Web Attack,50,436,init_win_bytes_forward,0.25278184056282044
+Web Attack,50,436,packet length variance,0.023416161970235407
+Web Attack,50,436,packet length mean,0.05799623916624114
+Web Attack,50,436,fwd iat max,0.045115353595465424
+Web Attack,50,436,bwd iat std,0.007807648345769849
+Web Attack,50,436,idle max,0.016829492767938062
+Web Attack,50,436,bwd iat total,0.03204010333683982
+Web Attack,50,436,fwd iat total,0.06025501362979412
+Web Attack,50,436,flow iat std,0.09548712831921875
+Web Attack,50,436,fin flag count,0.0
+Web Attack,50,436,idle mean,0.013683510743649095
+Web Attack,50,436,protocol,0.021891159111983142
+Web Attack,50,436,packet length std,0.03528774843551218
+Web Attack,50,436,bwd packet length max,0.05682081481267232
+Web Attack,50,436,flow iat max,0.04303240654524416
+Web Attack,50,436,bwd packet length mean,0.026686711829388515

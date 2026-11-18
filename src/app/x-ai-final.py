@@ -25,7 +25,7 @@ warnings.filterwarnings("ignore")
 # PATH
 # =====================================================
 
-DATA_DIR = Path(r"D:\luanvsn\.venv\final\data\preprocessed")
+DATA_DIR = Path(r"D:\luanvsn\.venv\final\data\preprocessed_multiclass_grouped")
 MODEL_DIR = Path("saved_models")
 XAI_DIR = Path("xai_comparison_final4")
 
@@ -42,23 +42,26 @@ DATASETS = [
     {
         "name": "CIC17",
         "key": "cic17",
-        "X_test": "preprocessed_cic17_X_test.npy",
-        "Y_test": "preprocessed_cic17_y_test.npy",
-        "feature_names": "preprocessed_cic17_feature_names.pkl",
+        "X_test": "preprocessed_multi_cic17_X_test.npy",
+        "Y_test": "preprocessed_multi_cic17_y_test.npy",
+        "feature_names": "preprocessed_multi_cic17_feature_names.pkl",
+        "label_encoder": "preprocessed_multi_cic17_label_encoder.pkl",
     },
     {
         "name": "NSL-KDD",
         "key": "nsl-kdd",
-        "X_test": "preprocessed_nsl-kdd_X_test.npy",
-        "Y_test": "preprocessed_nsl-kdd_y_test.npy",
-        "feature_names": "preprocessed_nsl-kdd_feature_names.pkl",
+        "X_test": "preprocessed_multi_nsl-kdd_X_test.npy",
+        "Y_test": "preprocessed_multi_nsl-kdd_y_test.npy",
+        "feature_names": "preprocessed_multi_nsl-kdd_feature_names.pkl",
+        "label_encoder": "preprocessed_multi_nsl-kdd_label_encoder.pkl",
     },
     {
         "name": "SIGNAL2022",
         "key": "signal22",
-        "X_test": "signal22_X_test.npy",
-        "Y_test": "signal22_y_test.npy",
-        "feature_names": "signal22_feature_names.pkl",
+        "X_test": "preprocessed_multi_signal22_X_test.npy",
+        "Y_test": "preprocessed_multi_signal22_y_test.npy",
+        "feature_names": "preprocessed_multi_signal22_feature_names.pkl",
+        "label_encoder": "preprocessed_multi_signal22_label_encoder.pkl",
     },
 ]
 
@@ -83,6 +86,7 @@ lime_explainer = None
 X_test = None
 y_test = None
 feature_names = None
+class_names = []
 needs_3d = False
 current_data = {}
 canvas = None
@@ -128,7 +132,7 @@ def load_feature_names(dataset_info, n_features):
 
 def load_pipeline(dataset_name: str, model_name: str):
   global model, predict_fn, explainer, lime_explainer
-  global X_test, y_test, feature_names, needs_3d
+  global X_test, y_test, feature_names, class_names, needs_3d
 
   try:
     # LOAD DATASET INFO
@@ -137,6 +141,8 @@ def load_pipeline(dataset_name: str, model_name: str):
     # LOAD X_TEST & Y_TEST
     X_test = np.load(DATA_DIR / ds_info["X_test"])
     y_test = np.load(DATA_DIR / ds_info["Y_test"])
+    label_encoder = joblib.load(DATA_DIR / ds_info["label_encoder"])
+    class_names = [str(name) for name in label_encoder.classes_]
 
     if y_test.ndim > 1:
       y_test = np.argmax(y_test, axis=1)
@@ -154,22 +160,24 @@ def load_pipeline(dataset_name: str, model_name: str):
 
     # LOAD MODEL
     if is_deep:
-      model_path = MODEL_DIR / f"{dataset_name}_{model_name}.h5"
+      model_path = MODEL_DIR / f"{dataset_name}_{model_name}.keras"
       model = tf.keras.models.load_model(model_path)
 
       def predict_fn_local(X):
         X = np.asarray(X)
         if needs_3d:
           if X.ndim == 1:
-            X = X.reshape((1, 1, -1))
+            X = X.reshape((1, X.shape[0], 1)) if model_name == "CNN" else X.reshape((1, 1, -1))
           elif X.ndim == 2:
-            X = X.reshape((X.shape[0], 1, X.shape[1]))
+            X = X.reshape((X.shape[0], X.shape[1], 1)) if model_name == "CNN" else X.reshape((X.shape[0], 1, X.shape[1]))
 
         p = model.predict(X, verbose=0)
         if p.ndim == 1:
           p = p.reshape((-1, 1))
         if p.shape[1] == 1:
           p = np.hstack([1 - p, p])
+        if p.shape[1] != len(class_names):
+          raise ValueError(f"Model output has {p.shape[1]} classes; dataset has {len(class_names)}")
         return p
 
       predict_fn = predict_fn_local
@@ -178,6 +186,13 @@ def load_pipeline(dataset_name: str, model_name: str):
       with open(model_path, "rb") as f:
         model = pickle.load(f)
       predict_fn = model.predict_proba
+      model_classes = np.asarray(getattr(model, "classes_", []))
+      if model_classes.size and not np.array_equal(model_classes, np.arange(len(class_names))):
+        raise ValueError(f"Model class order {model_classes.tolist()} does not match encoded labels 0..{len(class_names)-1}")
+
+    output_check = np.asarray(predict_fn(X_test[:1]))
+    if output_check.ndim != 2 or output_check.shape[1] != len(class_names):
+      raise ValueError(f"Model outputs {output_check.shape}; expected one score per {len(class_names)} classes")
 
     # SHAP EXPLAINER
     if is_deep:
@@ -196,7 +211,7 @@ def load_pipeline(dataset_name: str, model_name: str):
     lime_explainer = LimeTabularExplainer(
         X_test[:100],
         feature_names=feature_names,
-        class_names=["Benign", "Attack"],
+        class_names=class_names,
         mode="classification",
     )
 
@@ -247,7 +262,7 @@ model_box.pack(side=tk.LEFT, padx=5)
 tk.Label(frame_top, text="Filter:").pack(side=tk.LEFT, padx=5)
 filter_box = ttk.Combobox(
     frame_top,
-    values=["All", "Only Benign", "Only Attack", "Wrong Only"],
+    values=["All", "Wrong Only"],
     width=15,
 )
 filter_box.set("All")
@@ -289,14 +304,42 @@ def get_filtered_indices(filter_type: str):
   preds = predict_fn(X_test)
   preds = np.argmax(preds, axis=1)
 
-  if filter_type == "Only Benign":
-    return np.where(y_test == 0)[0]
-  elif filter_type == "Only Attack":
-    return np.where(y_test == 1)[0]
-  elif filter_type == "Wrong Only":
+  if filter_type == "Wrong Only":
     return np.where(preds != y_test)[0]
+  elif filter_type.startswith("Class: "):
+    class_id = class_names.index(filter_type[len("Class: "):])
+    return np.where(y_test == class_id)[0]
   else:
     return np.arange(len(X_test))
+
+
+def select_class_shap(values, class_idx, n_classes, n_features):
+  """Return a single sample's attribution vector for the requested class."""
+  if isinstance(values, list):
+    if class_idx >= len(values):
+      raise ValueError(f"SHAP returned {len(values)} classes; requested {class_idx}")
+    arr = np.asarray(values[class_idx])
+    return np.squeeze(arr).reshape(-1)[:n_features]
+
+  arr = np.asarray(values)
+  arr = np.squeeze(arr)
+  if arr.ndim == 1 and arr.size == n_features:
+    return arr
+  if arr.ndim == 2:
+    if arr.shape == (n_features, n_classes):
+      return arr[:, class_idx]
+    if arr.shape == (n_classes, n_features):
+      return arr[class_idx]
+    if arr.shape[-1] == n_features:
+      return arr[0]
+  if arr.ndim == 3:
+    if arr.shape[1] == n_features and arr.shape[2] == n_classes:
+      return arr[0, :, class_idx]
+    if arr.shape[1] == n_classes and arr.shape[2] == n_features:
+      return arr[0, class_idx, :]
+    if arr.shape[0] == n_classes and arr.shape[-1] == n_features:
+      return arr[class_idx, 0, :]
+  raise ValueError(f"Cannot select class {class_idx} from SHAP shape {arr.shape}")
 
 # =====================================================
 # EXPLAIN SAMPLE
@@ -319,6 +362,11 @@ def explain_sample():
     )
     return
 
+  filter_box.configure(values=["All", "Wrong Only"] + [f"Class: {name}" for name in class_names])
+  if FILTER not in filter_box.cget("values"):
+    filter_box.set("All")
+    FILTER = "All"
+
   indices = get_filtered_indices(FILTER)
 
   try:
@@ -333,7 +381,7 @@ def explain_sample():
     return
 
   x = X_test[real_idx]
-  x_predict = x.reshape(1, 1, -1) if needs_3d else x.reshape(1, -1)
+  x_predict = (x.reshape(1, len(x), 1) if MODEL == "CNN" else x.reshape(1, 1, -1)) if needs_3d else x.reshape(1, -1)
 
   pred_prob = predict_fn(x_predict)
   pred = int(np.argmax(pred_prob[0]))
@@ -344,22 +392,17 @@ def explain_sample():
   )
   result_text.insert(
       tk.END,
-      f"True Label   : {true} ({'Benign' if true == 0 else 'Attack'})\n",
+      f"True Label   : {true} ({class_names[true]})\n",
   )
   result_text.insert(
       tk.END,
-      f"Predicted    : {pred} ({'Benign' if pred == 0 else 'Attack'})\n",
+      f"Predicted    : {pred} ({class_names[pred]})\n",
   )
 
-  if pred_prob.shape[1] >= 2:
-    benign_prob = float(pred_prob[0][0]) * 100
-    attack_prob = float(pred_prob[0][1]) * 100
-    result_text.insert(
-        tk.END, f"Benign Probability: {benign_prob:.2f}%\n"
-    )
-    result_text.insert(
-        tk.END, f"Attack Probability: {attack_prob:.2f}%\n"
-    )
+  if pred_prob.shape[1] == len(class_names):
+    result_text.insert(tk.END, "Class probabilities:\n")
+    for class_idx, probability in enumerate(pred_prob[0]):
+      result_text.insert(tk.END, f"  {class_names[class_idx]}: {float(probability) * 100:.2f}%\n")
 
   if pred != true:
     result_text.insert(
@@ -375,22 +418,7 @@ def explain_sample():
     x_input = x.reshape(1, -1)
     sv = explainer.shap_values(x_input)
 
-    if isinstance(sv, list):
-      shap_vals = sv[1] if len(sv) > 1 else sv[0]
-    else:
-      shap_vals = sv
-
-    shap_vals = np.asarray(shap_vals)
-
-    if shap_vals.ndim == 3:
-      if shap_vals.shape[-1] == 2:
-        shap_vals = shap_vals[0, :, 1]
-      else:
-        shap_vals = shap_vals[0, :, 0]
-    elif shap_vals.ndim == 2:
-      shap_vals = shap_vals[0]
-
-    shap_vals = np.asarray(shap_vals).flatten()
+    shap_vals = select_class_shap(sv, pred, len(class_names), len(feature_names))
 
     if len(shap_vals) != len(feature_names):
       raise ValueError(
@@ -421,9 +449,9 @@ def explain_sample():
   lime_list = []
   try:
     exp = lime_explainer.explain_instance(
-        x, predict_fn, num_features=10
+        x, predict_fn, labels=(pred,), num_features=10
     )
-    lime_list = exp.as_list()
+    lime_list = exp.as_list(label=pred)
 
     result_text.insert(tk.END, "\n--- LIME Top 10 Features ---\n")
     for f, v in lime_list:
@@ -438,6 +466,7 @@ def explain_sample():
       "shap": shap_list,
       "lime": lime_list,
       "sample_idx": real_idx,
+      "class_name": class_names[pred],
   }
 
   # CLEAR OLD PLOT
@@ -452,11 +481,9 @@ def explain_sample():
     ax.barh(top_features[::-1], top_values[::-1])
     ax.axvline(0, linewidth=1)
     ax.set_title(
-        f"SHAP Local Explanation - {DATASET} | {MODEL} | Sample {real_idx}"
+        f"SHAP Local Explanation - {DATASET} | {MODEL} | {class_names[pred]} | Sample {real_idx}"
     )
-    ax.set_xlabel(
-        "SHAP Value (Positive → Attack, Negative → Benign)"
-    )
+    ax.set_xlabel("SHAP contribution for the predicted class")
     fig.tight_layout()
 
   canvas = FigureCanvasTkAgg(fig, master=frame_plot)
@@ -488,8 +515,16 @@ def export_excel():
     df_lime = pd.DataFrame(
         current_data["lime"], columns=["Feature", "LIME_Value"]
     )
+    df_summary = pd.DataFrame([{
+        "Sample_Index": current_data["sample_idx"],
+        "True_Class_ID": current_data["true"],
+        "True_Class": class_names[current_data["true"]],
+        "Predicted_Class_ID": current_data["pred"],
+        "Predicted_Class": current_data["class_name"],
+    }])
 
     with pd.ExcelWriter(file) as writer:
+      df_summary.to_excel(writer, sheet_name="Prediction", index=False)
       df_shap.to_excel(writer, sheet_name="SHAP", index=False)
       df_lime.to_excel(writer, sheet_name="LIME", index=False)
 
@@ -507,15 +542,18 @@ def show_global():
   try:
     sv = explainer.shap_values(X_test[:200])
 
+    n_classes = len(class_names)
     if isinstance(sv, list):
-      sv = sv[1] if len(sv) > 1 else sv[0]
-
-    sv = np.asarray(sv)
-
-    if sv.ndim == 3:
-      sv = sv[:, :, 1] if sv.shape[-1] == 2 else sv[:, :, 0]
-
-    mean_abs = np.mean(np.abs(sv), axis=0)
+      class_values = [np.asarray(class_sv) for class_sv in sv]
+      mean_abs = np.mean(np.abs(np.stack(class_values, axis=-1)), axis=(0, 2))
+    else:
+      sv = np.asarray(sv)
+      if sv.ndim == 3 and sv.shape[0] == min(200, len(X_test)) and sv.shape[1] == len(feature_names) and sv.shape[2] == n_classes:
+        mean_abs = np.mean(np.abs(sv), axis=(0, 2))
+      elif sv.ndim == 2 and sv.shape == (min(200, len(X_test)), len(feature_names)):
+        mean_abs = np.mean(np.abs(sv), axis=0)
+      else:
+        raise ValueError(f"Unsupported global SHAP shape {sv.shape}")
     top_idx = np.argsort(mean_abs)[::-1][:15]
 
     plt.figure(figsize=(10, 6))
@@ -525,7 +563,7 @@ def show_global():
     )
     plt.title(
         f"Global Feature Importance - {dataset_box.get()} |"
-        f" {model_box.get()}"
+        f" {model_box.get()} | mean across {len(class_names)} classes"
     )
     plt.xlabel("Mean |SHAP Value|")
     plt.tight_layout()

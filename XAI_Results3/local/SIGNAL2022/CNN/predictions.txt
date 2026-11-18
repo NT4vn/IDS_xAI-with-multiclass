@@ -1,0 +1,24 @@
+
+=== Lớp thật: DoS ===
+Sample 55006: true=0 (DoS), predicted=0 (DoS), correct=True, probability=0.999994
+  Probabilities: DoS=0.999994, Malware=0.000000, Normal=0.000006, Port Scan=0.000000
+Sample 476844: true=0 (DoS), predicted=0 (DoS), correct=True, probability=1.000000
+  Probabilities: DoS=1.000000, Malware=0.000000, Normal=0.000000, Port Scan=0.000000
+
+=== Lớp thật: Malware ===
+Sample 259785: true=1 (Malware), predicted=1 (Malware), correct=True, probability=1.000000
+  Probabilities: DoS=0.000000, Malware=1.000000, Normal=0.000000, Port Scan=0.000000
+Sample 609356: true=1 (Malware), predicted=1 (Malware), correct=True, probability=1.000000
+  Probabilities: DoS=0.000000, Malware=1.000000, Normal=0.000000, Port Scan=0.000000
+
+=== Lớp thật: Normal ===
+Sample 52595: true=2 (Normal), predicted=2 (Normal), correct=True, probability=1.000000
+  Probabilities: DoS=0.000000, Malware=0.000000, Normal=1.000000, Port Scan=0.000000
+Sample 428966: true=2 (Normal), predicted=2 (Normal), correct=True, probability=1.000000
+  Probabilities: DoS=0.000000, Malware=0.000000, Normal=1.000000, Port Scan=0.000000
+
+=== Lớp thật: Port Scan ===
+Sample 58406: true=3 (Port Scan), predicted=3 (Port Scan), correct=True, probability=0.999918
+  Probabilities: DoS=0.000000, Malware=0.000000, Normal=0.000082, Port Scan=0.999918
+Sample 324155: true=3 (Port Scan), predicted=3 (Port Scan), correct=True, probability=0.998677
+  Probabilities: DoS=0.000000, Malware=0.000000, Normal=0.001323, Port Scan=0.998677

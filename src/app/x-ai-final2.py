@@ -27,27 +27,30 @@ os.environ["CUDA_VISIBLE_DEVICES"] = ""
 # PATH & CONFIG
 # ============================================================
 
-DATA_DIR = Path(r"D:\luanvsn\.venv\final\data\preprocessed")
+DATA_DIR = Path(r"D:\luanvsn\.venv\final\data\preprocessed_multiclass_grouped")
 MODEL_DIR = Path("saved_models")
 
 DATASETS = [
     {
         "name": "CIC17",
-        "X_test": "preprocessed_cic17_X_test.npy",
-        "Y_test": "preprocessed_cic17_y_test.npy",
-        "feature_names": "preprocessed_cic17_feature_names.pkl",
+        "X_test": "preprocessed_multi_cic17_X_test.npy",
+        "Y_test": "preprocessed_multi_cic17_y_test.npy",
+        "feature_names": "preprocessed_multi_cic17_feature_names.pkl",
+        "label_encoder": "preprocessed_multi_cic17_label_encoder.pkl",
     },
     {
         "name": "NSL-KDD",
-        "X_test": "preprocessed_nsl-kdd_X_test.npy",
-        "Y_test": "preprocessed_nsl-kdd_y_test.npy",
-        "feature_names": "preprocessed_nsl-kdd_feature_names.pkl",
+        "X_test": "preprocessed_multi_nsl-kdd_X_test.npy",
+        "Y_test": "preprocessed_multi_nsl-kdd_y_test.npy",
+        "feature_names": "preprocessed_multi_nsl-kdd_feature_names.pkl",
+        "label_encoder": "preprocessed_multi_nsl-kdd_label_encoder.pkl",
     },
     {
         "name": "SIGNAL2022",
-        "X_test": "preprocessed_signal22_X_test.npy",
-        "Y_test": "preprocessed_signal22_y_test.npy",
-        "feature_names": "preprocessed_signal22_feature_names.pkl",
+        "X_test": "preprocessed_multi_signal22_X_test.npy",
+        "Y_test": "preprocessed_multi_signal22_y_test.npy",
+        "feature_names": "preprocessed_multi_signal22_feature_names.pkl",
+        "label_encoder": "preprocessed_multi_signal22_label_encoder.pkl",
     },
 ]
 
@@ -83,6 +86,7 @@ frame_plot.pack(fill="both", expand=True, padx=10, pady=10)
 dataset_var = tk.StringVar(value="NSL-KDD")
 model_var = tk.StringVar(value="RandomForest")
 explainer_var = tk.StringVar(value="TreeSHAP")
+class_var = tk.StringVar(value="")
 
 # COMBOBOXES
 ttk.Label(frame_control, text="Dataset").grid(
@@ -119,6 +123,10 @@ explainer_combo = ttk.Combobox(
 )
 explainer_combo.grid(row=0, column=5, padx=5)
 
+ttk.Label(frame_control, text="Class to explain").grid(row=0, column=6, padx=5, pady=5)
+class_combo = ttk.Combobox(frame_control, textvariable=class_var, values=[], width=22, state="readonly")
+class_combo.grid(row=0, column=7, padx=5)
+
 # ============================================================
 # HELPER FUNCTIONS
 # ============================================================
@@ -141,6 +149,11 @@ def load_dataset(name):
 
   X = np.load(X_path)
   y = np.load(Y_path)
+  encoder_path = DATA_DIR / ds["label_encoder"]
+  if not encoder_path.exists():
+    raise FileNotFoundError(f"Không tìm thấy label encoder:\n{encoder_path}")
+  label_encoder = joblib.load(encoder_path)
+  class_names = [str(name) for name in label_encoder.classes_]
 
   print(f"X shape: {X.shape}\nY shape: {y.shape}")
 
@@ -174,13 +187,13 @@ def load_dataset(name):
     print(f"{i:02d}: {feature}")
   print("=" * 70)
 
-  return X, y, feature_names
+  return X, y, feature_names, class_names
 
 def load_model(dataset, model_name):
   print(f"\nLoading model... Dataset: {dataset} | Model: {model_name}")
 
   if model_name in ["DNN", "CNN", "LSTM"]:
-    model_path = MODEL_DIR / f"{dataset}_{model_name}.h5"
+    model_path = MODEL_DIR / f"{dataset}_{model_name}.keras"
     if not model_path.exists():
       raise FileNotFoundError(f"Không tìm thấy model:\n{model_path}")
     model = tf.keras.models.load_model(model_path)
@@ -201,11 +214,14 @@ def reset_plot():
 def create_predict_fn(model, model_name, needs_3d):
 
   def predict_fn(data):
+    data = np.asarray(data)
     if needs_3d and data.ndim == 2:
-      data = data.reshape((data.shape[0], 1, data.shape[1]))
+      data = data.reshape((data.shape[0], data.shape[1], 1)) if model_name == "CNN" else data.reshape((data.shape[0], 1, data.shape[1]))
 
     if model_name in ["DNN", "CNN", "LSTM"]:
       result = np.asarray(model.predict(data, verbose=0))
+      if result.ndim == 1:
+        result = result.reshape(-1, 1)
       if result.ndim == 2 and result.shape[1] == 1:
         result = np.hstack([1 - result, result])
       return result
@@ -218,7 +234,7 @@ def create_predict_fn(model, model_name, needs_3d):
 
   return predict_fn
 
-def normalize_shap_values(sv, X):
+def normalize_shap_values_legacy(sv, X):
   print("\nOriginal SHAP shape:", np.array(sv).shape)
 
   if isinstance(sv, list):
@@ -271,6 +287,54 @@ def normalize_shap_values(sv, X):
   )
 
 # ============================================================
+# MULTICLASS SHAP OUTPUT NORMALIZATION
+# ============================================================
+
+def normalize_shap_values(sv, X, class_idx, n_classes):
+  """Select one class from common SHAP multi-output layouts."""
+  n_samples, n_features = X.shape
+  if isinstance(sv, list):
+    if class_idx >= len(sv):
+      raise ValueError(f"SHAP returned {len(sv)} outputs; class {class_idx} requested")
+    sv = np.asarray(sv[class_idx])
+  else:
+    sv = np.asarray(sv)
+
+  if sv.ndim == 4:
+    if sv.shape[0] == n_samples and sv.shape[1] == n_features and sv.shape[-1] == n_classes:
+      sv = sv[:, :, 0, class_idx]
+    elif sv.shape[0] == n_samples and sv.shape[2] == n_features and sv.shape[-1] == n_classes:
+      sv = sv[:, 0, :, class_idx]
+    else:
+      raise ValueError(f"Cannot select class from SHAP shape {sv.shape}")
+  elif sv.ndim == 3:
+    if sv.shape == (n_samples, n_features, n_classes):
+      sv = sv[:, :, class_idx]
+    elif sv.shape == (n_samples, n_classes, n_features):
+      sv = sv[:, class_idx, :]
+    elif sv.shape == (n_classes, n_samples, n_features):
+      sv = sv[class_idx]
+    elif sv.shape == (n_samples, n_features, 1):
+      sv = sv[:, :, 0]
+    elif sv.shape == (n_samples, 1, n_features):
+      sv = sv[:, 0, :]
+    else:
+      raise ValueError(f"Cannot select class from SHAP shape {sv.shape}")
+  elif sv.ndim == 2 and sv.shape == (n_features, n_classes):
+    sv = sv[:, class_idx].reshape(1, -1)
+  elif sv.ndim == 2 and sv.shape == (n_classes, n_features):
+    sv = sv[class_idx].reshape(1, -1)
+  elif sv.ndim == 1 and sv.size == n_features:
+    sv = sv.reshape(1, -1)
+
+  if sv.shape != (n_samples, n_features):
+    if sv.size == n_samples * n_features:
+      sv = sv.reshape(n_samples, n_features)
+    else:
+      raise ValueError(f"SHAP shape {sv.shape} does not match {(n_samples, n_features)}")
+  return sv
+
+# ============================================================
 # RUN XAI PIPELINE
 # ============================================================
 
@@ -288,7 +352,11 @@ def run_xai():
         f" {explainer_type}"
     )
 
-    X_test, y_test, feature_names = load_dataset(dataset_name)
+    X_test, y_test, feature_names, class_names = load_dataset(dataset_name)
+    class_combo.configure(values=class_names)
+    if class_var.get() not in class_names:
+      class_var.set(class_names[0])
+    class_idx = class_names.index(class_var.get())
     n_samples = min(N_GLOBAL, len(X_test))
     X = X_test[:n_samples]
 
@@ -297,9 +365,18 @@ def run_xai():
     model = load_model(dataset_name, model_name)
     is_deep = model_name in ["DNN", "CNN", "LSTM"]
     needs_3d = model_name in ["CNN", "LSTM"]
+    predict_fn = create_predict_fn(model, model_name, needs_3d)
+    model_classes = np.asarray(getattr(model, "classes_", []))
+    if model_classes.size and not np.array_equal(model_classes, np.arange(len(class_names))):
+      raise ValueError(f"Model class order {model_classes.tolist()} does not match encoded labels 0..{len(class_names)-1}")
+    output_check = np.asarray(predict_fn(X[:1]))
+    if output_check.ndim != 2 or output_check.shape[1] != len(class_names):
+      raise ValueError(f"Model outputs {output_check.shape}; expected one score per {len(class_names)} classes")
 
     X_3d = (
-        X.reshape((X.shape[0], 1, X.shape[1])) if needs_3d else X
+        X.reshape((X.shape[0], X.shape[1], 1)) if model_name == "CNN"
+        else X.reshape((X.shape[0], 1, X.shape[1])) if needs_3d
+        else X
     )
     sv = None
 
@@ -358,7 +435,7 @@ def run_xai():
       lime_exp = LimeTabularExplainer(
           X,
           feature_names=feature_names,
-          class_names=["Benign", "Attack"],
+          class_names=class_names,
           mode="classification",
           discretize_continuous=True,
       )
@@ -368,9 +445,9 @@ def run_xai():
       for i in range(len(X)):
         print(f"LIME: {i + 1}/{len(X)}", end="\r")
         exp = lime_exp.explain_instance(
-            X[i], predict_fn, num_features=X.shape[1]
+            X[i], predict_fn, labels=(class_idx,), num_features=X.shape[1]
         )
-        for feature_idx, weight in exp.as_map().get(1, []):
+        for feature_idx, weight in exp.as_map().get(class_idx, []):
           if feature_idx < X.shape[1]:
             lime_values[i, feature_idx] = weight
 
@@ -378,7 +455,7 @@ def run_xai():
       sv = lime_values
 
     # Normalize & Plot
-    sv = normalize_shap_values(sv, X)
+    sv = normalize_shap_values(sv, X, class_idx, len(class_names))
     print("\nĐang vẽ biểu đồ...")
 
     fig = plt.figure(figsize=(10, 6))
@@ -390,7 +467,7 @@ def run_xai():
         max_display=min(20, len(feature_names)),
     )
     plt.title(
-        f"{explainer_type} - {model_name} - {dataset_name}", fontsize=12
+        f"{explainer_type} - {model_name} - {dataset_name} - {class_names[class_idx]}", fontsize=12
     )
     plt.tight_layout()
 

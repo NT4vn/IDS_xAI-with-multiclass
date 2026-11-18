@@ -1,0 +1,48 @@
+
+=== Lớp thật: Botnet / Infiltration ===
+Sample 44349: true=0 (Botnet / Infiltration), predicted=0 (Botnet / Infiltration), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=1.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+Sample 462715: true=0 (Botnet / Infiltration), predicted=0 (Botnet / Infiltration), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=1.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+
+=== Lớp thật: Brute Force ===
+Sample 270065: true=1 (Brute Force), predicted=1 (Brute Force), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=1.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+Sample 272854: true=1 (Brute Force), predicted=1 (Brute Force), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=1.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+
+=== Lớp thật: DDoS ===
+Sample 53033: true=2 (DDoS), predicted=2 (DDoS), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=1.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+Sample 434550: true=2 (DDoS), predicted=2 (DDoS), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=1.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+
+=== Lớp thật: DoS ===
+Sample 58040: true=3 (DoS), predicted=3 (DoS), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=1.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+Sample 326875: true=3 (DoS), predicted=3 (DoS), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=1.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+
+=== Lớp thật: Normal ===
+Sample 459187: true=4 (Normal), predicted=4 (Normal), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=1.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+Sample 475002: true=4 (Normal), predicted=4 (Normal), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=1.000000, Other=0.000000, Port Scan=0.000000, Web Attack=0.000000
+
+=== Lớp thật: Other ===
+Sample 322938: true=5 (Other), predicted=5 (Other), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=1.000000, Port Scan=0.000000, Web Attack=0.000000
+Sample 490864: true=5 (Other), predicted=5 (Other), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=1.000000, Port Scan=0.000000, Web Attack=0.000000
+
+=== Lớp thật: Port Scan ===
+Sample 281122: true=6 (Port Scan), predicted=6 (Port Scan), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=1.000000, Web Attack=0.000000
+Sample 522164: true=6 (Port Scan), predicted=6 (Port Scan), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=1.000000, Web Attack=0.000000
+
+=== Lớp thật: Web Attack ===
+Sample 120695: true=7 (Web Attack), predicted=7 (Web Attack), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=1.000000
+Sample 254939: true=7 (Web Attack), predicted=7 (Web Attack), correct=True, probability=1.000000
+  Probabilities: Botnet / Infiltration=0.000000, Brute Force=0.000000, DDoS=0.000000, DoS=0.000000, Normal=0.000000, Other=0.000000, Port Scan=0.000000, Web Attack=1.000000

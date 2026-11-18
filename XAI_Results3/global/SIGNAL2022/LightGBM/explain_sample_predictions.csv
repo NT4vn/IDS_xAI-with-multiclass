@@ -1,0 +1,161 @@
+﻿test_row_index,true_class_index,true_class_name,predicted_class_index,predicted_class_name,probability_DoS,probability_Malware,probability_Normal,probability_Port Scan
+2763,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+7806,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+8613,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+11252,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+12380,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+17750,3,Port Scan,2,Normal,0.0,0.0,1.0,0.0
+19380,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+20082,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+38375,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+40500,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+45705,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+45995,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+54239,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+56447,0,DoS,3,Port Scan,0.0,0.0,0.0,1.0
+60054,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+64046,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+73081,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+78134,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+91508,0,DoS,3,Port Scan,0.0,0.0,0.0,1.0
+100216,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+103506,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+103608,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+115769,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+118740,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+123313,3,Port Scan,2,Normal,0.0,0.0,1.0,0.0
+131529,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+134935,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+137325,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+140252,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+147168,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+150421,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+150650,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+153615,2,Normal,0,DoS,1.0,0.0,0.0,0.0
+155120,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+160956,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+161418,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+163823,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+168359,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+176034,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+176418,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+176757,3,Port Scan,2,Normal,0.0,0.0,1.0,0.0
+178979,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+182266,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+189332,2,Normal,3,Port Scan,0.0,0.0,0.0,1.0
+191410,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+192062,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+193582,2,Normal,0,DoS,1.0,0.0,0.0,0.0
+197077,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+200492,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+200671,1,Malware,2,Normal,0.0,0.0,1.0,0.0
+203582,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+208678,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+209307,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+224850,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+227200,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+229048,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+233902,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+240194,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+248098,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+248196,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+249610,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+259769,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+259785,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+265716,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+267341,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+270127,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+273828,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+278746,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+279036,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+282201,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+286498,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+288431,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+290325,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+290907,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+291767,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+299230,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+300348,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+301070,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+303145,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+303395,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+308342,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+308591,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+309032,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+309342,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+323321,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+325537,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+331883,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+332362,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+335561,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+338117,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+338932,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+340502,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+341310,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+342324,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+344147,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+346427,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+350015,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+350973,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+379273,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+388271,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+393652,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+394157,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+397438,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+410583,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+410870,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+415319,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+415668,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+415728,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+417107,3,Port Scan,0,DoS,1.0,0.0,0.0,0.0
+420829,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+424823,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+425143,1,Malware,3,Port Scan,0.0,0.0,0.0,1.0
+429151,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+430003,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+431509,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+431642,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+435689,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+443850,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+446289,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+446509,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+447521,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+451070,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+451716,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+461122,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+467142,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+481079,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+482469,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+486458,1,Malware,1,Malware,0.0010198100606115914,0.9971511070818122,0.0018290828575762137,0.0
+486772,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+488939,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+491148,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+504944,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+505542,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+507211,3,Port Scan,2,Normal,0.0,0.0,1.0,0.0
+508377,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+508700,3,Port Scan,2,Normal,0.0,0.0,1.0,0.0
+515414,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+515665,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+518081,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+520875,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+527284,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+528239,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+528810,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+532456,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+548163,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+564520,3,Port Scan,0,DoS,1.0,0.0,0.0,0.0
+565413,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+566253,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+575075,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+575164,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+582487,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+586818,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+592361,1,Malware,1,Malware,0.0,1.0,0.0,0.0
+595077,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+596487,2,Normal,0,DoS,1.0,0.0,0.0,0.0
+599572,3,Port Scan,2,Normal,0.0,0.0,1.0,0.0
+604199,0,DoS,0,DoS,1.0,0.0,0.0,0.0
+604366,3,Port Scan,3,Port Scan,0.0,0.0,0.0,1.0
+605718,2,Normal,2,Normal,0.0,0.0,1.0,0.0
+613651,2,Normal,3,Port Scan,0.0,0.0,0.0,1.0

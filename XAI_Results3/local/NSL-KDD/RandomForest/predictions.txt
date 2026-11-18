@@ -1,0 +1,30 @@
+
+=== Lớp thật: DoS ===
+Sample 2576: true=0 (DoS), predicted=0 (DoS), correct=True, probability=1.000000
+  Probabilities: DoS=1.000000, Normal=0.000000, Other=0.000000, Probe=0.000000, R2L=0.000000, U2R=0.000000
+Sample 22860: true=0 (DoS), predicted=0 (DoS), correct=True, probability=1.000000
+  Probabilities: DoS=1.000000, Normal=0.000000, Other=0.000000, Probe=0.000000, R2L=0.000000, U2R=0.000000
+
+=== Lớp thật: Normal ===
+Sample 12947: true=1 (Normal), predicted=1 (Normal), correct=True, probability=0.999780
+  Probabilities: DoS=0.000090, Normal=0.999780, Other=0.000000, Probe=0.000000, R2L=0.000130, U2R=0.000000
+Sample 13118: true=1 (Normal), predicted=1 (Normal), correct=True, probability=0.999780
+  Probabilities: DoS=0.000090, Normal=0.999780, Other=0.000000, Probe=0.000000, R2L=0.000130, U2R=0.000000
+
+=== Lớp thật: Probe ===
+Sample 2516: true=3 (Probe), predicted=3 (Probe), correct=True, probability=0.995344
+  Probabilities: DoS=0.000000, Normal=0.004656, Other=0.000000, Probe=0.995344, R2L=0.000000, U2R=0.000000
+Sample 20501: true=3 (Probe), predicted=3 (Probe), correct=True, probability=1.000000
+  Probabilities: DoS=0.000000, Normal=0.000000, Other=0.000000, Probe=1.000000, R2L=0.000000, U2R=0.000000
+
+=== Lớp thật: R2L ===
+Sample 3297: true=4 (R2L), predicted=4 (R2L), correct=True, probability=0.996749
+  Probabilities: DoS=0.000855, Normal=0.002378, Other=0.000000, Probe=0.000016, R2L=0.996749, U2R=0.000002
+Sample 16573: true=4 (R2L), predicted=4 (R2L), correct=True, probability=0.982247
+  Probabilities: DoS=0.000129, Normal=0.017573, Other=0.000000, Probe=0.000052, R2L=0.982247, U2R=0.000000
+
+=== Lớp thật: U2R ===
+Sample 19208: true=5 (U2R), predicted=5 (U2R), correct=True, probability=0.468022
+  Probabilities: DoS=0.000004, Normal=0.343648, Other=0.000000, Probe=0.000178, R2L=0.188149, U2R=0.468022
+Sample 20487: true=5 (U2R), predicted=5 (U2R), correct=True, probability=0.437740
+  Probabilities: DoS=0.000000, Normal=0.308724, Other=0.000001, Probe=0.000387, R2L=0.253148, U2R=0.437740
